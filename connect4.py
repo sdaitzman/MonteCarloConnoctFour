@@ -31,6 +31,7 @@ DIRECTIONS = (
 
 # Board Functions
 
+
 def create_board(rows=ROWS, columns=COLUMNS):
     ''' Creates empty Connect 4 board '''
     board = []
@@ -45,6 +46,7 @@ def create_board(rows=ROWS, columns=COLUMNS):
 
   # Copy board
 
+
 def copy_board(board):
     ''' Return a copy of the board '''
     rows    = len(board)
@@ -56,10 +58,12 @@ def copy_board(board):
             copied[row][column] = board[row][column]
     return copied
 
+
 def print_board(board):
     ''' Prints Connect 4 board '''
     for row in board:
         print('|' + '|'.join(row) + '|')
+
 
 def drop_piece(board, column, piece):
     ''' Attempts to drop specified piece into the board at the
@@ -74,6 +78,7 @@ def drop_piece(board, column, piece):
             return True
 
     return False
+
 
 def find_winner(board, length=4):
     ''' Return whether or not the board has a winner '''
@@ -90,6 +95,7 @@ def find_winner(board, length=4):
                 return board[row][column]
 
     return None
+
 
 def check_piece(board, row, column, length):
     ''' Return whether or not there is a winning sequence starting from
@@ -117,3 +123,21 @@ def check_piece(board, row, column, length):
             return True
 
     return False
+
+
+def HumanPlayer(board, history, players):
+    ''' Read move from human player '''
+    columns = len(board[0])
+    column  = -1
+
+    while column not in range(0, columns):
+        column = input('Which column? ')
+        print("you input ", column)
+        print("valid inputs are", column in [*range(0, columns)], [*range(0, columns)])
+    return column
+
+
+def RandomPlayer(board, history, players):
+    ''' Randomly select a column '''
+    columns = len(board[0])
+    return random.randint(0, columns - 1)
