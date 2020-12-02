@@ -1,7 +1,7 @@
 [build]
     base = "site/"
     command = "npm run build"
-    publish = ".vuepress/dist"
+    publish = "site/.vuepress/dist"
     
 [[redirects]]
     from = "/*"
