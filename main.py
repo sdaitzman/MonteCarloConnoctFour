@@ -36,7 +36,7 @@ while not Winner:
         History.append(move)
 
     if Tries > 3:
-        print('Player {} is stuck!').format((turn % 2) + 1)
+        print("Player", (turn % 2) + 1," is stuck!")
         break
 
     time.sleep(1)

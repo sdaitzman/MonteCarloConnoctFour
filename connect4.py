@@ -6,7 +6,6 @@ https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/project01.html
 """
 
 import random
-import time
 
 # Game Constants
 
@@ -18,9 +17,9 @@ PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
 
 PIECE_COLOR_MAP = {
-    PIECE_NONE : 'white',
-    PIECE_ONE  : 'black',
-    PIECE_TWO  : 'red',
+    PIECE_NONE : "white",
+    PIECE_ONE  : "black",
+    PIECE_TWO  : "red",
 }
 
 DIRECTIONS = (
@@ -29,11 +28,9 @@ DIRECTIONS = (
     ( 1, -1), ( 1, 0), ( 1, 1),
 )
 
-# Board Functions
-
 
 def create_board(rows=ROWS, columns=COLUMNS):
-    ''' Creates empty Connect 4 board '''
+    """ Creates empty Connect 4 board """
     board = []
 
     for row in range(rows):
@@ -44,11 +41,9 @@ def create_board(rows=ROWS, columns=COLUMNS):
 
     return board
 
-  # Copy board
-
 
 def copy_board(board):
-    ''' Return a copy of the board '''
+    """ Return a copy of the board """
     rows    = len(board)
     columns = len(board[0])
     copied  = create_board(rows, columns)
@@ -60,17 +55,17 @@ def copy_board(board):
 
 
 def print_board(board):
-    ''' Prints Connect 4 board '''
+    """ Prints Connect 4 board """
     for row in board:
         print('|' + '|'.join(row) + '|')
 
 
 def drop_piece(board, column, piece):
-    ''' Attempts to drop specified piece into the board at the
+    """ Attempts to drop specified piece into the board at the
     specified column
 
     If this succeeds, return True, otherwise return False.
-    '''
+    """
 
     for row in reversed(board):
         if row[column] == PIECE_NONE:
@@ -98,9 +93,9 @@ def find_winner(board, length=4):
 
 
 def check_piece(board, row, column, length):
-    ''' Return whether or not there is a winning sequence starting from
+    """ Return whether or not there is a winning sequence starting from
     this piece
-    '''
+    """
     rows    = len(board)
     columns = len(board[0])
 
@@ -126,7 +121,7 @@ def check_piece(board, row, column, length):
 
 
 def HumanPlayer(board, history, players):
-    ''' Read move from human player '''
+    """ Read move from human player """
     columns = len(board[0])
     column  = -1
 
@@ -137,6 +132,6 @@ def HumanPlayer(board, history, players):
 
 
 def RandomPlayer(board, history, players):
-    ''' Randomly select a column '''
+    """ Randomly select a column """
     columns = len(board[0])
     return random.randint(0, columns - 1)
