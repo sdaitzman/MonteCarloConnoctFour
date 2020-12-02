@@ -24,7 +24,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -277,7 +278,7 @@ pythonenv*
 .ropeproject
 
 # mkdocs documentation
-/site
+# /site
 
 # mypy
 .mypy_cache/
