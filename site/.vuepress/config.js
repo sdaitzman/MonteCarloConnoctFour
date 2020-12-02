@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'PARCEL B SEASONAL CHANGES',
+    title: 'Monte Carlo Tree Search Connect Four',
     plugins: [],
     markdown: {
       anchor: {
