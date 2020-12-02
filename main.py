@@ -36,11 +36,14 @@ while not Winner:
         History.append(move)
 
     if Tries > 3:
-        print('Player {} is stuck!').format((turn % 2) + 1)
+        print("Player", (turn % 2) + 1," is stuck!")
         break
 
     time.sleep(1)
 
     Winner = connect4.find_winner(Board)
 
-print('The Winner is {}').format(connect4.PIECE_COLOR_MAP[Winner])
+    if Winner is not None:
+        print(connect4.PIECE_COLOR_MAP[Winner])
+
+print("The Winner is the", connect4.PIECE_COLOR_MAP[Winner], "piece")
