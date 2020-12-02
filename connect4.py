@@ -131,7 +131,7 @@ def HumanPlayer(board, history, players):
     column  = -1
 
     while column not in range(0, columns):
-        column = input('Which column? ')
+        column = int(input('Which column? '))
         print("you input ", column)
         print("valid inputs are", column in [*range(0, columns)], [*range(0, columns)])
     return column
