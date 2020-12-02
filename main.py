@@ -43,4 +43,7 @@ while not Winner:
 
     Winner = connect4.find_winner(Board)
 
-print('The Winner is {}').format(connect4.PIECE_COLOR_MAP[Winner])
+    if Winner is not None:
+        print(connect4.PIECE_COLOR_MAP[Winner])
+
+print("The Winner is the", connect4.PIECE_COLOR_MAP[Winner], "piece")
