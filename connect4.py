@@ -6,7 +6,6 @@ https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/project01.html
 """
 
 import random
-import time
 
 # Game Constants
 
@@ -18,9 +17,9 @@ PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
 
 PIECE_COLOR_MAP = {
-    PIECE_NONE : 'white',
-    PIECE_ONE  : 'black',
-    PIECE_TWO  : 'red',
+    PIECE_NONE : "white",
+    PIECE_ONE  : "black",
+    PIECE_TWO  : "red",
 }
 
 DIRECTIONS = (
