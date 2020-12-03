@@ -12,7 +12,7 @@ import time
 
 Players = (connect4.PIECE_ONE, connect4.PIECE_TWO)
 History = []
-Board   = connect4.create_board()
+Board   = connect4.Board()
 Radius  = 40
 Winner  = None
 Tries   = 0
@@ -31,7 +31,7 @@ while not Winner:
         move = connect4.RandomPlayer(Board, History, Players)  # Player Two
         print("bot move is ", move, "history is ", History)
 
-    if connect4.drop_piece(Board, move, Players[turn % 2]):
+    if Board.drop_piece(move, Players[turn % 2]):
         Tries = 0
         History.append(move)
 
@@ -39,9 +39,9 @@ while not Winner:
         print('Player {} is stuck!').format((turn % 2) + 1)
         break
 
-    time.sleep(1)
+    # time.sleep(1)
 
-    Winner = connect4.find_winner(Board)
+    Winner = Board.find_winner()
 
     if Winner is not None:
         print(connect4.PIECE_COLOR_MAP[Winner])
