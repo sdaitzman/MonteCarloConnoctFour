@@ -59,6 +59,7 @@ class Board:
     def __str__(self):
         ''' Prints Connect 4 board '''
         board_str = ""
+        board_str += " 0 1 2 3 4 5 6\n"
         for row in self.board:
             board_str += str('|' + '|'.join(row) + '|' + '\n')
         return board_str
@@ -75,6 +76,18 @@ class Board:
             if row[column] == PIECE_NONE:
                 row[column] = piece
                 self.turn ^= 1
+                return True
+
+        return False
+
+    def drop_piece_test(self, column, piece):
+        ''' Check if it possible to place a piece in a given column.
+
+        If is a valid move, return True, otherwise return False.
+        '''
+
+        for row in reversed(self.board):
+            if row[column] == PIECE_NONE:
                 return True
 
         return False
