@@ -9,12 +9,13 @@ Players = (connect4.PIECE_ONE, connect4.PIECE_TWO)
 Board   = connect4.Board()
 Radius  = 40
 Tries   = 0
+player_type = ["Human", "Random", "MCTS"]
 
 #TODO Increase itermax
 #TODO Store game tree to continually train AI
-itermax = 100
+itermax = 200
 
-def start_game(board):
+def start_game(board, player1, player2):
     Winner  = None
     node = Node(board=board)
     while not Winner:
@@ -24,23 +25,28 @@ def start_game(board):
         node.piece = node.pieces[node.turn]
 
         if turn % 2 == 0:
-            print("player 1 move")
-            # move = connect4.HumanPlayer(board, Players)  # Player Two
-            node, move = MCTS(board, itermax, node)   # Player One
-            print("player move is ", move, "history is ", board.history)
+            if player1 == player_type[0]:
+                move = connect4.HumanPlayer(board, Players)  # Human Player
+            elif player1 == player_type[1]:
+                move = connect4.RandomPlayer(board, Players)  # Random Player
+            else:
+                node, move = MCTS(board, itermax, node)   # MCTS Player
+            # print("player move is ", move, "history is ", board.history)
 
         else:
-            print("player 2 move")
-            # move = connect4.RandomPlayer(board, Players)  # Player Two
-            node, move = MCTS(board, itermax, node)
-            print("bot move is ", move, "history is ", board.history)
+            if player2 == player_type[0]:
+                move = connect4.HumanPlayer(board, Players)  # Human Player
+            elif player2 == player_type[1]:
+                move = connect4.RandomPlayer(board, Players)  # Random Player
+            else:
+                node, move = MCTS(board, itermax, node)   # Player One
 
         if board.drop_piece(move, node.piece):
             Tries = 0
             board.history.append(move)
 
         if Tries > 3:
-            print("Player", (turn % 2) + 1," is stuck!")
+            # print("Player", (turn % 2) + 1," is stuck!")
             break
 
         if node.child_nodes:
@@ -57,9 +63,25 @@ def start_game(board):
         if Winner is not None:
             print(connect4.PIECE_COLOR_MAP[Winner])
 
-    print("The Winner is the", connect4.PIECE_COLOR_MAP[Winner], "piece")
+    # print("The Winner is the", connect4.PIECE_COLOR_MAP[Winner], "piece")
+
+    return Players.index(Winner)
 
 # TODO: Run multiple simulations and see how many times MCTS wins against other
 # players
 if __name__ == "__main__":
-    start_game(Board)
+    winner = start_game(Board, "MCTS", "Human")
+    print(winner)
+
+    ### Uncomment to play several games against MCTS
+    # games = 10
+    # wins = 0
+    # for game in range(games):
+    #     Board = connect4.Board()
+    #     winner = start_game(Board)
+    #     print(winner)
+    #     if winner == 1: # first player is 0, second is 1
+    #         wins += 1
+    #     percent_win = wins/300
+    #     if game % 2 == 0:
+    #         print("MCTS win rate against random player: {}%".format(percent_win))

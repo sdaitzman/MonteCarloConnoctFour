@@ -81,12 +81,10 @@ def MCTS(curr_board, itermax, curr_node=None):
 
     if curr_node != None:
         root = curr_node
-        print("root exists")
         root.board = curr_board
+        root.new_moves = root.board.find_moves(root.piece)
     else:
         root = Node(board=curr_board)
-        print("root does not exist")
-    print(root.board.board)
 
     for i in range(itermax):
         # Run simulation games itermax times, starting at the current position
@@ -96,12 +94,14 @@ def MCTS(curr_board, itermax, curr_node=None):
 
         # We are at a node that has all paths explored and not a W/L/D state
         while node.new_moves == [] and node.child_nodes != []:
+            # print("old node")
             node = node.make_move()
             board.drop_piece(node.move, node.piece)
             board.history.append(node.move)
             node.switch_turns()
         # Explore moves that haven't been explored yet
         if node.new_moves != []:
+            # print("make new node")
             move = random.choice(node.new_moves)
             board.drop_piece(move, node.piece)
             board.history.append(move)
@@ -109,15 +109,15 @@ def MCTS(curr_board, itermax, curr_node=None):
             node.switch_turns()
         # continue to explore while there are available moves
         while board.find_moves(node.piece):
-            #print(board.find_moves(node.piece))
             move = random.choice(board.find_moves(node.piece))
-            if board.drop_piece(move, node.piece):
-                board.history.append(move)
-                node.switch_turns()
-
+            board.drop_piece(move, node.piece)
+            board.history.append(move)
+            node.switch_turns()
+            # print(board)
         # There are no available moves so a terminal state has been reached
         # Backpropogation
         winning_piece = board.find_winner()
+        # print("Game over; winner is", winning_piece)
         while node is not None:
             if winning_piece == node.piece:
                 isWin = True
@@ -128,15 +128,19 @@ def MCTS(curr_board, itermax, curr_node=None):
 
     # Choose best move based on winning percentages
     foo = lambda x: x.wins/x.visits
+    # print("Child Nodes:")
     # for child in root.child_nodes:
     #     print(child.move)
     sorted_child_nodes = sorted(root.child_nodes, key=foo)[::-1]
 
     # print winning percentages of each valid move
-    print("AI\'s computed winning percentages")
-    for node in sorted_child_nodes:
-        print('Move: %s    Win Rate: %.2f%%' % (node.move+1, 100*node.wins/node.visits))
-    print('Simulations performed: %s\n' % i)
+    # print("AI\'s computed winning percentages")
+    # for node in sorted_child_nodes:
+    #     print('Move: %s    Win Rate: %.2f%%' % (node.move+1, 100*node.wins/node.visits))
+    # print('Simulations performed: %s\n' % i)
 
     # return original state of board and best move
+    if sorted_child_nodes == []:
+        print(curr_board)
+        print(root.board)
     return root, sorted_child_nodes[0].move
