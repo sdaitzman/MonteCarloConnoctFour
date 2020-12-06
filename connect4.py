@@ -6,6 +6,7 @@ https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/project01.html
 """
 
 import random
+import copy
 
 # Game Constants
 
@@ -36,6 +37,8 @@ class Board:
         self.board = []
         self.columns = columns
         self.rows = rows
+        self.history = []
+        self.turn = 0
 
         for row in range(self.rows):
             board_row = []
@@ -71,6 +74,7 @@ class Board:
         for row in reversed(self.board):
             if row[column] == PIECE_NONE:
                 row[column] = piece
+                self.turn ^= 1
                 return True
 
         return False
@@ -79,8 +83,9 @@ class Board:
         if self.find_winner():
             return []
         moves = []
-        for column in self.columns:
-            if self.drop_piece(column, piece):
+        for column in range(self.columns):
+            test_board = copy.deepcopy(self)
+            if test_board.drop_piece(column, piece):
                 moves.append(column)
         return moves
 
@@ -129,7 +134,7 @@ class Board:
         return False
 
 
-def HumanPlayer(board, history, players):
+def HumanPlayer(board, players):
     ''' Read move from human player '''
     columns = len(board.board[0])
     column  = -1
@@ -140,7 +145,7 @@ def HumanPlayer(board, history, players):
     return column
 
 
-def RandomPlayer(board, history, players):
+def RandomPlayer(board, players):
     ''' Randomly select a column '''
     columns = len(board.board[0])
     return random.randint(0, columns - 1)
