@@ -1,6 +1,16 @@
 module.exports = {
     title: 'Monte Carlo Tree Search Connect Four',
-    plugins: [],
+    plugins: [
+      [
+        'vuepress-plugin-mathjax',
+        {
+          target: 'svg',
+          macros: {
+            '*': '\\times'
+          }
+        }
+      ]
+    ],
     markdown: {
       anchor: {
         permalink: false,

@@ -16,6 +16,7 @@
     "normalize.css": "^8.0.1",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
-    "vuepress": "^1.7.1"
+    "vuepress": "^1.7.1",
+    "vuepress-plugin-mathjax": "^1.2.8"
   }
 }
