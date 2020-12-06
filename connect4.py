@@ -10,13 +10,16 @@ import copy
 
 # Game Constants
 
+# default board size
 ROWS       = 6
 COLUMNS    = 7
 
+# piece types for showing on the board
 PIECE_NONE = ' '
 PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
 
+# piece types for declaring who won
 PIECE_COLOR_MAP = {
     PIECE_NONE : "white",
     PIECE_ONE  : "black",
@@ -29,11 +32,14 @@ DIRECTIONS = (
     ( 1, -1), ( 1, 0), ( 1, 1),
 )
 
-# Board Functions
-
 class Board:
     def __init__(self, rows=ROWS, columns=COLUMNS):
-        ''' Creates empty Connect 4 board '''
+        '''
+        Creates empty Connect 4 board
+
+        rows: the 0-indexed number of rows to play with
+        columns: the 0-indexed number of columns to play with
+        '''
         self.board = []
         self.columns = columns
         self.rows = rows
@@ -59,7 +65,11 @@ class Board:
     def __str__(self):
         ''' Prints Connect 4 board '''
         board_str = ""
+
+        # print the column index to help guide player
         board_str += " 0 1 2 3 4 5 6\n"
+
+        # print board, including the pieces which have been placed
         for row in self.board:
             board_str += str('|' + '|'.join(row) + '|' + '\n')
         return board_str
@@ -70,6 +80,9 @@ class Board:
         specified column
 
         If this succeeds, return True, otherwise return False.
+
+        column: int index of column to place piece in
+        piece: o or x, representing which player to place for
         '''
 
         for row in reversed(self.board):
@@ -84,6 +97,9 @@ class Board:
         ''' Check if it possible to place a piece in a given column.
 
         If is a valid move, return True, otherwise return False.
+
+        column: int index of column to place piece in
+        piece: o or x, representing which player to place for
         '''
 
         for row in reversed(self.board):
@@ -93,6 +109,14 @@ class Board:
         return False
 
     def find_moves(self, piece):
+        '''
+        Make a list of valid column indices for a piece given the
+        current game state
+
+        returns: list of columns, which are int indices of column to place piece in
+        piece: o or x, representing which player to place for
+        '''
+        
         if self.find_winner():
             return []
         moves = []
@@ -103,7 +127,12 @@ class Board:
         return moves
 
     def find_winner(self, length=4):
-        ''' Return whether or not the board has a winner '''
+        '''
+        Return whether or not the board has a winner for a given
+        streak length
+
+        length: how long of a streak of pieces to look for (default 4)
+        '''
 
         rows    = len(self.board)
         columns = len(self.board[0])
@@ -118,11 +147,16 @@ class Board:
 
         return None
 
-
     def check_piece(self, row, column, length):
-        ''' Return whether or not there is a winning sequence starting from
-        this piece
         '''
+        Return whether or not there is a winning sequence starting from
+        this piece.
+
+        column: index of column to check
+        row: index of row to check
+        length: how long of a streak to look for
+        '''
+
         rows    = len(self.board)
         columns = len(self.board[0])
 
@@ -148,7 +182,13 @@ class Board:
 
 
 def HumanPlayer(board, players):
-    ''' Read move from human player '''
+    '''
+    Read move from human player
+
+    board: Board object
+    players: tuple of player characters, i.e. (x, o)
+    '''
+
     columns = len(board.board[0])
     column  = -1
 
@@ -159,6 +199,12 @@ def HumanPlayer(board, players):
 
 
 def RandomPlayer(board, players):
-    ''' Randomly select a column '''
+    '''
+    Randomly select a column
+
+    board: Board object
+    players: tuple of player characters, i.e. (x, o)
+    '''
+
     columns = len(board.board[0])
     return random.randint(0, columns - 1)
