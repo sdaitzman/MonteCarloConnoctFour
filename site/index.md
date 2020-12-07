@@ -6,7 +6,7 @@ layout: "Layout"
 
 # Monte Carlo Connect Four
 
-This is a website about Monte Carlo.
+This is a website about Monte Carlo. It can also have [subpages](subpage/index.md).
 
 Inline math: $\rho=\frac{m}{l*w*h}$ and block math:s
 
@@ -20,5 +20,10 @@ void someFunction(int aNumber) {
     doSomething(aNumber);
 }
 ```
+
+An image:
+
+![Alt text. This is a terminal](./fig/terminal.png)
+<!-- Make sure these images are referenced with relative paths -->
 
 Made with ❤️ at Olin College.
