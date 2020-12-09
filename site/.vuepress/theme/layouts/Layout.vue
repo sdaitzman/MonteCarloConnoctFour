@@ -2,7 +2,7 @@
   <div class="all-container" :class="$page.title.toLowerCase()">
   <link rel="preconnect" href="https://fonts.gstatic.com"> 
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
+    <NavBar/>
     <div class="body-container">
       <div class="body-content">
         <Content />
@@ -21,13 +21,13 @@
 </style>
 
 <script>
-// import Nav from '@theme/components/Nav'
+import NavBar from '@theme/components/NavBar'
 import 'normalize.css'
 // import "fontsource-libre-baskerville"
 
 export default {
   components: {
-    // Nav
+    NavBar
   }
 }
 </script>
