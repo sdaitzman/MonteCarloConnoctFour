@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@centerforopenscience/markdown-it-imsize": "^2.0.1",
+    "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
