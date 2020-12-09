@@ -13,6 +13,10 @@ a, a:visited { color: black }
     background-color: black;
 }
 
+.page {
+    display: flex;
+}
+
 .body-container {
     font-size: 20px;
     padding: 3rem 5rem;
