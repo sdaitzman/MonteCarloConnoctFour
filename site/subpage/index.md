@@ -4,7 +4,7 @@ date: 2020-12-02
 layout: "Layout"
 ---
 
-[Go back link](../index.md)
+[Go back link](../aPage.md)
 
 # Monte Carlo Connect Four Subpage
 
