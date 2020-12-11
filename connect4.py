@@ -176,6 +176,8 @@ class Board:
 
                 # if there are any streaks of the chosen length
                 wins += self.check_piece_multiple(row, column, length, piece)
+                print(self)
+                print(wins)
         return wins / 2
 
     def check_piece_multiple(self, row, column, length, piece):
