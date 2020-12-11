@@ -61,7 +61,6 @@ class Board:
 
         return copied
 
-
     def __str__(self):
         ''' Prints Connect 4 board '''
         board_str = ""
@@ -189,7 +188,7 @@ class Board:
         column: index of column to check
         length: how long of a streak to look for
 
-        returns:
+        returns: how many streaks exist
         '''
         rows = len(self.board)
         columns = len(self.board[0])
