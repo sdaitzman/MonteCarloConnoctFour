@@ -4,9 +4,10 @@ body { font-family: "Palatino Linotype", "Palatino", "Times New Roman", serif }
 
 html, body {
     transition: font-size 0.3s ease, padding 0.3s ease;
+    color: #363636;
 }
 
-a, a:visited { color: black }
+a, a:visited { color: #363636 }
 
 ::selection {
     color: white;
