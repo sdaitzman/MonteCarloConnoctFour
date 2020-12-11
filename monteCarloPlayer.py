@@ -66,54 +66,68 @@ class Node:
             self.wins += 1
         self.visits += 1
 
-    def switch_turns(self):
+    def switch_turns(self, board=None):
         '''
         Changes player turn for game tree
         '''
-        self.turn = self.board.turn
+        if board:
+            self.turn = board.turn
+        else:
+            self.turn = self.board.turn
         self.piece = self.pieces[self.turn]
 
 
-def MCTS(curr_board, itermax, curr_node=None):
+def MCTS(curr_board, itermax, curr_node=None, build_tree=False, db=None):
     '''
     Builds the game tree and trains the computer
     '''
 
     if curr_node != None:
         root = curr_node
-        root.board = curr_board
-        root.new_moves = root.board.find_moves(root.piece)
+        if root.child_nodes == [] and root.new_moves == []:
+            root.new_moves = root.board.find_moves(root.piece)
+        # root.board = curr_board
+        # root.new_moves = root.board.find_moves(root.piece)
     else:
         root = Node(board=curr_board)
+    if build_tree and db != None:
+        db.append(root)
 
+    counter = 0
     for i in range(itermax):
+
         # Run simulation games itermax times, starting at the current position
         # in the game (root)
         node = root
         board = copy.deepcopy(curr_board)
-
         # We are at a node that has all paths explored and not a W/L/D state
         while node.new_moves == [] and node.child_nodes != []:
             # print("old node")
             node = node.make_move()
             board.drop_piece(node.move, node.piece)
             board.history.append(node.move)
-            node.switch_turns()
+            node.switch_turns(board)
+            if build_tree and db != None and node not in db:
+                db.append(node)
         # Explore moves that haven't been explored yet
         if node.new_moves != []:
-            # print("make new node")
+            # print("new node")
             move = random.choice(node.new_moves)
             board.drop_piece(move, node.piece)
             board.history.append(move)
             node = node.expand_tree(move, board)
-            node.switch_turns()
+            node.switch_turns(board)
+            if build_tree and db != None and node not in db:
+                db.append(node)
         # continue to explore while there are available moves
         while board.find_moves(node.piece):
+            # print("explore")
             move = random.choice(board.find_moves(node.piece))
             board.drop_piece(move, node.piece)
             board.history.append(move)
-            node.switch_turns()
-            # print(board)
+            node.switch_turns(board)
+            if build_tree and db != None and node not in db:
+                db.append(node)
         # There are no available moves so a terminal state has been reached
         # Backpropogation
         winning_piece = board.find_winner()
@@ -141,6 +155,5 @@ def MCTS(curr_board, itermax, curr_node=None):
 
     # return original state of board and best move
     if sorted_child_nodes == []:
-        print(curr_board)
-        print(root.board)
+        return root, None
     return root, sorted_child_nodes[0].move
