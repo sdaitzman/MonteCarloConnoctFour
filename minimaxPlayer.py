@@ -52,7 +52,7 @@ class Node:
 
         # switch to opponent's turn to continue the game
         new_node.board.turn ^= 1
-        new_node.switch_turns()
+        new_node.switch_turns(board=board)
 
         # mark node as visited
         self.new_moves.remove(move)
@@ -73,7 +73,7 @@ class Node:
 
         # switch to opponent's turn to continue the game
         new_node.board.turn ^= 1
-        new_node.switch_turns()
+        new_node.switch_turns(board=board)
 
         # mark node as visited
         # TODO will this be a bug in the Minimax alg?
@@ -90,11 +90,14 @@ class Node:
             self.wins += 1
         self.visits += 1
 
-    def switch_turns(self):
+    def switch_turns(self, board=None):
         '''
         Changes player turn for game tree
         '''
-        self.turn = self.board.turn
+        if board:
+            self.turn = board.turn
+        else:
+            self.turn = self.board.turn
         self.piece = self.pieces[self.turn]
 
 
@@ -212,10 +215,10 @@ def rating_eval(current_node):
     neg_threes = current_node.board.find_winner_multiple(opponent_piece, 2)
 
 
-    if len(neg_fours) >= 1:
+    if neg_fours >= 1:
         # dont make a move in which the opponent wins!
         rating =  -100000
     else:
-        rating =  len(pos_fours)*100000 + len(pos_threes) * 100 + len(pos_twos) * 10 - len(neg_threes) * 10
+        rating =  pos_fours*100000 + pos_threes * 100 + pos_twos * 10 - neg_threes * 10
 
     return rating
