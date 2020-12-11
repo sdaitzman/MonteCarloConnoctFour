@@ -1,5 +1,5 @@
 <template>
-  <div class="photo-holder">
+  <div class="nav-bar">
     <ul>
       <li><router-link to="/connect-four/">Connect Four</router-link></li>
       <li><router-link to="/mcts/">MCTS</router-link></li>

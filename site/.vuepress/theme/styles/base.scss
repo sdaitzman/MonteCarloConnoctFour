@@ -17,9 +17,11 @@ a, a:visited { color: black }
     display: flex;
 }
 
+.nav-bar, .body-container { padding: 5rem }
+
 .body-container {
-    font-size: 20px;
     padding: 3rem 5rem;
+    font-size: 20px;
     img {
         max-width: 600px;
     }
