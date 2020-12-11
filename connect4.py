@@ -168,15 +168,57 @@ class Board:
                 if self.board[row][column] == PIECE_NONE:
                     continue
 
-                if self.check_piece(row, column, length):
-                    # TODO remove duplicates
-                    # i.e if a piece has been involved in a piece do not consider it again
-                    # in the count.
-                    if self.board[row][column] == piece:
-                        wins.append(self.board[row][column])
+                # if self.check_piece(row, column, length):
+                #     # TODO remove duplicates
+                #     # i.e if a piece has been involved in a piece do not consider it again
+                #     # in the count.
+                #     if self.board[row][column] == piece:
+                #         wins.append(self.board[row][column])
 
+                # if there are any streaks of the chosen length
+                if self.check_piece_multiple(row, column, length, piece) > 0:
+                    wins.append[self.board[row][column]]
         return wins
 
+    def check_piece_multiple(self, row, column, length, piece):
+        '''
+        Return whether or not there is a winning sequence starting from this
+        piece.
+
+        row: index of row to check
+        column: index of column to check
+        length: how long of a streak to look for
+
+        returns:
+        '''
+        rows = len(self.board)
+        columns = len(self.board[0])
+        count = 0
+
+        # check all directions from given piece coordinate
+        for dr, dc in DIRECTIONS:
+            found_winner = True
+            # check for streaks of given length
+            for i in range(1, length):
+                r = row + dr*i
+                c = column + dc*i
+
+                if r not in range(rows) or c not in range(columns):
+                    # no streak of length
+                    found_winner = False
+                    break
+
+                if self.board[r][c] != self.board[row][column]:
+                    # no streak of length
+                    found_winner = False
+                    break
+
+                if self.board[row][column] != piece:
+                    found_winner = False
+                    break
+
+            if found_winner:
+                count += 1
 
     def check_piece(self, row, column, length):
         '''
