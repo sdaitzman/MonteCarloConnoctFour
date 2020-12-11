@@ -1,24 +1,16 @@
 ---
-title: "Home"
+title: "Page Template"
 date: 2020-12-02
 layout: "Layout"
 ---
 
-# Monte Carlo Connect Four
+# Monte Carlo Connect Four Page Template
 
-This is a website about Monte Carlo.
+This is a placeholder page. Go [home](/).
 
-Inline math: $\rho=\frac{m}{l*w*h}$ and block math:s
-
-$$\frac {\partial^r} {\partial \omega^r} \left(\frac {y^{\omega}} {\omega}\right) 
-= \left(\frac {y^{\omega}} {\omega}\right) \left\{(\log y)^r + \sum_{i=1}^r \frac {(-1)^i r \cdots (r-i+1) (\log y)^{r-i}} {\omega^i} \right\}$$
-
-Some test code for syntax highlighting:
-```C
-void someFunction(int aNumber) {
-    // a comment
-    doSomething(aNumber);
-}
-```
-
-Made with ❤️ at Olin College.
+- [Connect Four](connect-four/index.md)
+- [MCTS](mcts/index.md)
+- [heuristics](heuristics/index.md)
+- [performance](performance/index.md)
+- [discussion](discussion/index.md)
+- [bibliography](bibliography/index.md)

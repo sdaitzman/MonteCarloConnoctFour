@@ -147,6 +147,37 @@ class Board:
 
         return None
 
+    def find_winner_multiple(self, piece, length):
+        '''
+        Return how many wins of a given lenth a given piece has.
+
+        length: how long of a streak of pieces to look for (default 4)
+        piece: which player, x or o
+
+        returns: list of placed piece coordinates which are associated with
+                 a win of the given length. There can be multiple wins in this
+                 abstraction :P
+        '''
+        wins = []
+
+        rows    = len(self.board)
+        columns = len(self.board[0])
+
+        for row in range(rows):
+            for column in range(columns):
+                if self.board[row][column] == PIECE_NONE:
+                    continue
+
+                if self.check_piece(row, column, length):
+                    # TODO remove duplicates
+                    # i.e if a piece has been involved in a piece do not consider it again
+                    # in the count.
+                    if self.board[row][column] == piece:
+                        wins.append(self.board[row][column])
+
+        return wins
+
+
     def check_piece(self, row, column, length):
         '''
         Return whether or not there is a winning sequence starting from
