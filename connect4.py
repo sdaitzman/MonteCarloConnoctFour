@@ -116,7 +116,7 @@ class Board:
         returns: list of columns, which are int indices of column to place piece in
         piece: o or x, representing which player to place for
         '''
-        
+
         if self.find_winner():
             return []
         moves = []
@@ -134,8 +134,8 @@ class Board:
         length: how long of a streak of pieces to look for (default 4)
         '''
 
-        rows    = len(self.board)
-        columns = len(self.board[0])
+        rows    = self.rows
+        columns = self.columns
 
         for row in range(rows):
             for column in range(columns):
@@ -157,8 +157,8 @@ class Board:
         length: how long of a streak to look for
         '''
 
-        rows    = len(self.board)
-        columns = len(self.board[0])
+        rows    = self.rows
+        columns = self.columns
 
         for dr, dc in DIRECTIONS:
             found_winner = True
