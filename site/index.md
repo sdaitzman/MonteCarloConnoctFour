@@ -1,5 +1,5 @@
 ---
-title: "Home"
+title: "Page Template"
 date: 2020-12-02
 layout: "Layout"
 ---
