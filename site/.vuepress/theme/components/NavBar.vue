@@ -22,5 +22,7 @@
 </script>
 
 <style scoped>
-
+ .nav-bar ul {
+     font-size: 1.2rem;
+}
 </style>

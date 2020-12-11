@@ -1,10 +1,10 @@
 ---
-title: "Page Template"
+title: "Home"
 date: 2020-12-02
 layout: "Layout"
 ---
 
-# Monte Carlo Connect Four Page Template
+# Monte Carlo Connect Four
 
 This is the home page :).
 
