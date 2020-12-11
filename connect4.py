@@ -149,7 +149,7 @@ class Board:
 
     def find_winner_multiple(self, piece, length):
         '''
-        Return how many wins of a given lenth a given piece has.
+        Return how many wins of a given length a given piece has.
 
         length: how long of a streak of pieces to look for (default 4)
         piece: which player, x or o
@@ -158,7 +158,7 @@ class Board:
                  a win of the given length. There can be multiple wins in this
                  abstraction :P
         '''
-        wins = []
+        wins = 0
 
         rows    = len(self.board)
         columns = len(self.board[0])
@@ -176,9 +176,8 @@ class Board:
                 #         wins.append(self.board[row][column])
 
                 # if there are any streaks of the chosen length
-                if self.check_piece_multiple(row, column, length, piece) > 0:
-                    wins.append[self.board[row][column]]
-        return wins
+                wins += self.check_piece_multiple(row, column, length, piece)
+        return wins / 2
 
     def check_piece_multiple(self, row, column, length, piece):
         '''
@@ -194,7 +193,6 @@ class Board:
         rows = len(self.board)
         columns = len(self.board[0])
         count = 0
-
         # check all directions from given piece coordinate
         for dr, dc in DIRECTIONS:
             found_winner = True
@@ -219,6 +217,8 @@ class Board:
 
             if found_winner:
                 count += 1
+
+        return count
 
     def check_piece(self, row, column, length):
         '''
