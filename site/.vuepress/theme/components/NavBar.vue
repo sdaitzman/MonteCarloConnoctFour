@@ -24,5 +24,8 @@
 <style scoped>
  .nav-bar ul {
      font-size: 1.2rem;
-}
+ }
+ .nav-bar li {
+     padding: 0.3rem;
+ }
 </style>

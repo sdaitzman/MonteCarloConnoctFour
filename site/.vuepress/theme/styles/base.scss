@@ -14,7 +14,7 @@ a, a:visited { color: #363636 }
     background-color: black;
 }
 
-.page {
+.all-container {
     display: flex;
 }
 
@@ -26,10 +26,27 @@ a, a:visited { color: #363636 }
     img {
         max-width: 600px;
     }
+      max-width: 800px;
 }
 
-@media (max-width: 500px) {
-    html {
-        font-size: 5px;
+@media (max-width: 650px) {
+    .all-container {
+        flex-direction: column;
+    }
+    .nav-bar {
+        padding-bottom: 0px;
+    }
+}
+
+  /* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 812px)
+  and (-webkit-min-device-pixel-ratio: 3) {
+     .all-container {
+        flex-direction: column;
+    }
+    .nav-bar {
+        padding-bottom: 0px;
     }
 }
