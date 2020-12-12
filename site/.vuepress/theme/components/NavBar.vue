@@ -1,8 +1,10 @@
 <template>
   <div class="nav-bar">
     <ul>
+      <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/connect-four/">Connect Four</router-link></li>
       <li><router-link to="/mcts/">MCTS</router-link></li>
+      <li><router-link to="/minimax/">Minimax</router-link></li>
       <li><router-link to="/heuristics/">Heuristics</router-link></li>
       <li><router-link to="/performance/">Performance</router-link></li>
       <li><router-link to="/discussion/">Discussion</router-link></li>
