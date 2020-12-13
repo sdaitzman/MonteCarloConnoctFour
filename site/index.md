@@ -21,5 +21,5 @@ In the minimax technique, game trees aren't typically played out in their entire
 ### [performance](performance/index.md)
 ### [discussion](discussion/index.md)
 ### [bibliography](bibliography/index.md)
-
+---
 Made with ❤️ at Olin College. [source code](https://github.com/sdaitzman/MonteCarloConnoctFour)
