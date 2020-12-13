@@ -7,3 +7,7 @@ layout: "Layout"
 # Tree Search Heuristics
 
 *Go [home](/).*
+
+## Monte Carlo Tree Search
+
+## Minimax

@@ -27,6 +27,7 @@
 <style scoped>
  .nav-bar ul {
      font-size: 1.2rem;
+     list-style-type: none;
  }
  .nav-bar li {
      padding: 0.3rem;
