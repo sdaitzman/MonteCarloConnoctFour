@@ -24,7 +24,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
  .nav-bar ul {
      font-size: 1.2rem;
      list-style-type: none;
