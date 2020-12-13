@@ -2,104 +2,10 @@ import random
 import numpy as np
 import copy
 import math
+from node import Node
 
 PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
-
-
-class Node:
-    def __init__(self, move=None, board=None, parent_node=None):
-        '''
-        Node of MiniMax Tree
-        board: Board object
-        turn: player 0 or player 1
-        piece: game piece (x or o)
-        child_nodes: all possible moves
-        new_moves: moves that haven't been explored yet
-        parent_node: previous turn
-        wins: number of wins that have occurred through this node
-        visits: number of times this node has been visited
-        '''
-        self.pieces = ['x','o']
-        self.board = copy.deepcopy(board)
-        self.turn = board.turn
-        self.piece = self.pieces[self.turn]
-        self.move = move
-        self.child_nodes = []
-        self.new_moves = board.find_moves(self.piece)
-        self.parent_node = parent_node
-        self.wins = 0
-        self.visits = 0
-
-    def make_move(self):
-        '''
-        Makes a move.
-
-        Returns the child node with the highest value given the formula
-
-        Function used most likely in MCTS scenario
-        '''
-        foo = lambda x: x.wins/x.visits + np.sqrt(2*np.log(self.visits)/x.visits)
-        return sorted(self.child_nodes, key=foo)[-1]
-
-    def expand_tree(self, move, board):
-        '''
-        Given a move not previously explored, create a child node to represent
-        that move and return that new node.
-        '''
-        board = copy.deepcopy(board)
-        new_node = Node(move=move, board=board, parent_node=self)
-
-        # switch to opponent's turn to continue the game
-        new_node.board.turn ^= 1
-        new_node.switch_turns(board=board)
-
-        # mark node as visited
-        self.new_moves.remove(move)
-
-        # link node to tree
-        self.child_nodes.append(new_node)
-
-        return new_node
-
-    def expand_tree_silent(self, move, board):
-        '''
-        Given a move not previously explored, create a child node to represent
-        that move and DONT return that new node. It only exists in the child link.
-        '''
-
-        board = copy.deepcopy(board)
-        new_node = Node(move=move, board=board, parent_node=self)
-
-        # switch to opponent's turn to continue the game
-        new_node.board.turn ^= 1
-        new_node.switch_turns(board=board)
-
-        # mark node as visited
-        # TODO will this be a bug in the Minimax alg?
-        self.new_moves.remove(move)
-
-        # link node to tree
-        self.child_nodes.append(new_node)
-
-    def update(self, isWin):
-        '''
-        Backpropogation after a game has finished
-        '''
-        if isWin:
-            self.wins += 1
-        self.visits += 1
-
-    def switch_turns(self, board=None):
-        '''
-        Changes player turn for game tree
-        '''
-        if board:
-            self.turn = board.turn
-        else:
-            self.turn = self.board.turn
-        self.piece = self.pieces[self.turn]
-
 
 def MiniMax(current_board, current_node=None):
     '''
@@ -126,12 +32,11 @@ def MiniMax(current_board, current_node=None):
     # evaluate possible next moves, making sure to only think
     # about the valid ones (not resulting in overfull board, etc)
     ratedMoves = {} # move to val map
-    for move in root.new_moves:
 
+    for move in root.new_moves:
         # make a new node with the given move
         # and flip the turn toggle
-        temp_node = root.expand_tree(move, root.board)
-
+        temp_node = root.expand_tree_mm(move, root.board)
         # evaluate moves with the recursive game tree explorer
         ratedMoves[move] = -mini_max_search(search_depth - 1, temp_node)
 
@@ -140,13 +45,14 @@ def MiniMax(current_board, current_node=None):
 
     best_move = None
     moves = ratedMoves.items()
-
     for move, rating in moves:
         if rating >= best_rating:
             best_rating = rating
             best_move = move
 
-    # return best_move, best_rating
+    # print(moves)
+    # print(best_move, best_rating)
+
     return best_move
 
 
@@ -173,7 +79,7 @@ def mini_max_search(depth_target, current_node):
     # check if it's a terminal (root or full board or game over) state
     # if terminal, evaluate heuristic at point
     # todo check for win/draw/loss at this point
-    if depth_target == 0 or len(potential_moves) == 0:
+    if depth_target == 0 or len(potential_moves) == 0 or current_node.board.find_winner():
         # do the heuristic here at the recursive base
         return rating_eval(current_node)
 
@@ -209,16 +115,18 @@ def rating_eval(current_node):
     pos_twos = current_node.board.find_winner_multiple(current_node.piece, 2)
 
     # opponent 4's (super bad!)
-    neg_fours = current_node.board.find_winner_multiple(opponent_piece, 2)
+    neg_fours = current_node.board.find_winner_multiple(opponent_piece, 4)
 
-    # opponent 3's?
-    neg_threes = current_node.board.find_winner_multiple(opponent_piece, 2)
+    # opponent 3's
+    neg_threes = current_node.board.find_winner_multiple(opponent_piece, 3)
 
+    # opponent 2's
+    neg_twos = current_node.board.find_winner_multiple(opponent_piece, 2)
 
     if neg_fours >= 1:
         # dont make a move in which the opponent wins!
         rating =  -100000
     else:
-        rating =  pos_fours*100000 + pos_threes * 100 + pos_twos * 10 - neg_threes * 10
+        rating =  pos_fours*100000 + pos_threes * 1000 + pos_twos * 10 - neg_twos * 10
 
     return rating

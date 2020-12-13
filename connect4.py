@@ -167,17 +167,9 @@ class Board:
                 if self.board[row][column] == PIECE_NONE:
                     continue
 
-                # if self.check_piece(row, column, length):
-                #     # TODO remove duplicates
-                #     # i.e if a piece has been involved in a piece do not consider it again
-                #     # in the count.
-                #     if self.board[row][column] == piece:
-                #         wins.append(self.board[row][column])
-
                 # if there are any streaks of the chosen length
                 wins += self.check_piece_multiple(row, column, length, piece)
-                print(self)
-                print(wins)
+
         return wins / 2
 
     def check_piece_multiple(self, row, column, length, piece):

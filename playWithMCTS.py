@@ -98,8 +98,8 @@ if __name__ == "__main__":
     #         print("MCTS win rate against random player: {}%".format(percent_win))
 
     ## Play against MCTS
-    dbfile = open('tree_MCTS','rb')
-    db = pickle.load(dbfile)
-    print(db[1].board)
+    # dbfile = open('tree_MCTS','rb')
+    # db = pickle.load(dbfile)
+    # print(db[1].board)
     print("Play game --------------")
     winner = start_game(Board, "Human", "MCTS", itermax=100, db=None)
