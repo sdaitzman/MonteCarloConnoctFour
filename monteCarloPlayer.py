@@ -124,7 +124,7 @@ def MCTS(curr_board, itermax, curr_node=None):
             board.drop_piece(move, node.piece)
             board.history.append(move)
             node.switch_turns(board)
-        print(board)
+        # print(board)
         # There are no available moves so a terminal state has been reached
         # Backpropogation
         winning_piece = board.find_winner()
