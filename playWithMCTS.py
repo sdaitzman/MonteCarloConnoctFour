@@ -17,17 +17,10 @@ player_type = ["Human", "Random", "MCTS"]
 #TODO Store game tree to continually train AI
 itermax = 200
 
-def start_game(board, player1, player2, itermax=100, build_tree=False, db=None):
+def start_game(board, player1, player2, itermax=100):
     Tries   = 0
     Winner = None
     node = Node(board=board)
-    if db:
-        if len(db) >= 2:
-            node = db[1]
-    elif build_tree and db != None and node not in db:
-        db.append(node)
-        print("Added board")
-        print(db[1].board)
     while not Winner:
         turn = len(board.history)
         node.turn = turn % 2
@@ -40,7 +33,7 @@ def start_game(board, player1, player2, itermax=100, build_tree=False, db=None):
             elif player1 == player_type[1]:
                 move = connect4.RandomPlayer(board, Players)  # Random Player
             else:
-                node, move = MCTS(board, itermax, node, build_tree=build_tree, db=db)   # MCTS Player
+                node, move = MCTS(board, itermax, node)   # MCTS Player
             # print("player move is ", move, "history is ", board.history)
 
         else:
@@ -50,7 +43,7 @@ def start_game(board, player1, player2, itermax=100, build_tree=False, db=None):
             elif player2 == player_type[1]:
                 move = connect4.RandomPlayer(board, Players)  # Random Player
             else:
-                node, move = MCTS(board, itermax, node, build_tree=build_tree, db=db)   # Player One
+                node, move = MCTS(board, itermax, node)   # Player One
 
         if move != None:
 
@@ -65,16 +58,12 @@ def start_game(board, player1, player2, itermax=100, build_tree=False, db=None):
             else:
                 node = Node(board=board)
 
-            if build_tree and db != [] and node not in db:
-                db.append(node)
-
         Winner = board.find_winner()
 
         # if Winner is not None:
         #     print(connect4.PIECE_COLOR_MAP[Winner])
 
-    if not build_tree:
-        print("The Winner is the", Winner, "piece")
+    print("The Winner is the", Winner, "piece")
 
     return Players.index(Winner)
 
@@ -98,8 +87,5 @@ if __name__ == "__main__":
     #         print("MCTS win rate against random player: {}%".format(percent_win))
 
     ## Play against MCTS
-    # dbfile = open('tree_MCTS','rb')
-    # db = pickle.load(dbfile)
-    # print(db[1].board)
     print("Play game --------------")
-    winner = start_game(Board, "Human", "MCTS", itermax=100, db=None)
+    winner = start_game(Board, "Human", "MCTS", itermax=100)
