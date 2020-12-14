@@ -32,6 +32,9 @@ export default {
 .photo-holder p {
   margin: 0;
 }
+img {
+    height: 100%
+}
 @media (max-width: 750px) {
   .photo-holder {
     flex-direction: column;
