@@ -34,6 +34,8 @@ a:active { color: lighten(black, 75%) }
   padding-right: 1rem;
 }
 
+.home .home-link, .demo .demo-link, .team .team-link, .connect.four .conn-link, .mcts .mcts-link, .minimax .mnmx-link, .performance .perf-link, .bibliography .bibl-link { color: #549ffe; }
+
 @media (max-width: 700px) {
     .all-container { flex-direction: column }
     .nav-bar {
