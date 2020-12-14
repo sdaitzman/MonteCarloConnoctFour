@@ -19,7 +19,7 @@ We implemented and tested a Monte Carlo Tree Search algorithm that can successfu
 
 <HeroButton to="/connect-four">Connect Four Gameplay</HeroButton>
 
-### [MCTS](mcts/index.md)
+### [Monte Carlo Tree Search](mcts/index.md)
 The Monte Carlo Tree Search algorithm determines the vest move possible for our player given the results of many game situations. Each node in the tree represents a unique game state. For each potential move, the game plays multiple games, choosing random moves until a win/loss/draw is reached. The algorithm then backpropagates up the tree, updating values at each node depending on the outcome. The move to take on that turn is the one with the best win rate based on simulations.
 
 <HeroButton to="/mcts">MCTS in Detail</HeroButton>
