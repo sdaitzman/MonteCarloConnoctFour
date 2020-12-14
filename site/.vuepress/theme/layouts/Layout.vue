@@ -28,6 +28,13 @@ import 'normalize.css'
 export default {
   components: {
     NavBar
+  },
+  mounted() {
+    document.addEventListener("touchstart", ()=>{}, true)
+  },
+  updated() {
+    document.addEventListener("touchstart", ()=>{}, true)
   }
 }
+
 </script>
