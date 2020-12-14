@@ -55,3 +55,10 @@ This paper details the Minimax algorithm conceptually in the context of the Conn
 <div class="csl-entry">Kerr, Wesley. “Connect Four and Effectiveness of Decision Trees.” <i>University of Wyoming</i>, p. 5.</div>
 <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=Connect%20Four%20and%20Effectiveness%20of%20Decision%20Trees&amp;rft.jtitle=University%20of%20Wyoming&amp;rft.aufirst=Wesley&amp;rft.aulast=Kerr&amp;rft.au=Wesley%20Kerr&amp;rft.pages=5&amp;rft.language=en"></span>
 </div>
+
+A paper outlining and diagraming the MCTS approach for gaming applications, including tic tac toe game and other situations. We used this paper as an outline of the rough approach for our MCTS algorithm.
+
+<div class="csl-bib-body" style="line-height: 2; margin-left: 2em; text-indent:-2em;">
+  <div class="csl-entry">Fu, Michael C. “Monte Carlo Tree Search: A Tutorial.” <i>University of Maryland</i>, p. 15.</div>
+  <span class="Z3988" title="url_ver=Z39.88-2004&amp;ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fzotero.org%3A2&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal&amp;rft.genre=article&amp;rft.atitle=Monte%20Carlo%20Tree%20Search%3A%20A%20Tutorial&amp;rft.jtitle=University%20of%20Maryland&amp;rft.aufirst=Michael%20C&amp;rft.aulast=Fu&amp;rft.au=Michael%20C%20Fu&amp;rft.pages=15&amp;rft.language=en"></span>
+</div>
