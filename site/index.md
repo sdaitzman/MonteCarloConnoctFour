@@ -8,7 +8,7 @@ layout: "Layout"
 Hi There!  
 
 <SidePhoto>
-We implemented and tested a Monte Carlo Tree Search algorithm that can successfully play Connect Four against a human player or another simulation. In the process,  we trained our algorithm, built an alternative minimax simulated player, and compared their performance. In this website, we included our findings, research, and conclusions. Take a dive in the world of board game bots and connect four!
+<p>We implemented and tested a Monte Carlo Tree Search algorithm that can successfully play Connect Four against a human player or another simulation. <br> <br><br>In the process,  we trained our algorithm, built an alternative minimax simulated player, and compared their performance. In this website, we included our findings, research, and conclusions. Take a dive in the world of board game bots and connect four!</p>
 
 <img src="./run.png" style="min-width: 50%;">
 
