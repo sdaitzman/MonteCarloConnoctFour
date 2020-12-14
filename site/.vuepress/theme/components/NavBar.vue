@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar">
     <ul>
-      <li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li>
+      <router-link to="/"><li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li></router-link>
       <router-link to="/"><li>Home</li></router-link>
       <router-link to="/demo"><li>Demo</li></router-link>
       <router-link to="/team/"><li>Team</li></router-link>
@@ -30,12 +30,11 @@
      list-style-type: none;
  }
  .nav-bar li {
-     padding: 0.3rem;
+     padding: 0.5rem;
  }
  .logo {
      width: 100%;
-     max-width: 300px;
-     min-width: 200px;
+     width: 200px;
  }
  .logo-holder {
      list-style-type: none;
