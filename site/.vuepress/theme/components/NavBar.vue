@@ -2,14 +2,14 @@
   <div class="nav-bar">
     <ul>
       <li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li>
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/demo">Demo</router-link></li>
-      <li><router-link to="/team/">Team</router-link></li>
-      <li><router-link to="/connect-four/">Connect Four</router-link></li>
-      <li><router-link to="/mcts/">Monte Carlo Tree Search</router-link></li>
-      <li><router-link to="/minimax/">Minimax</router-link></li>
-      <li><router-link to="/performance/">Performance</router-link></li>
-      <li><router-link to="/bibliography/">Bibliography</router-link></li>
+      <router-link to="/"><li>Home</li></router-link>
+      <router-link to="/demo"><li>Demo</li></router-link>
+      <router-link to="/team/"><li>Team</li></router-link>
+      <router-link to="/connect-four/"><li>Connect Four</li></router-link>
+      <router-link to="/mcts/"><li>Monte Carlo Tree Search</li></router-link>
+      <router-link to="/minimax/"><li>Minimax</li></router-link>
+      <router-link to="/performance/"><li>Performance</li></router-link>
+      <router-link to="/bibliography/"><li>Bibliography</li></router-link>
     </ul>
   </div>
 </template>
