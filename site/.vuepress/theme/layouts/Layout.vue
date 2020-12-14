@@ -30,4 +30,6 @@ export default {
     NavBar
   }
 }
+
+document.addEventListener("touchstart", ()=>{}, true)
 </script>
