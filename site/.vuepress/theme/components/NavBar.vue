@@ -2,14 +2,14 @@
   <div class="nav-bar">
     <ul>
       <router-link to="/"><li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li></router-link>
-      <router-link to="/"><li>Home</li></router-link>
-      <router-link to="/demo"><li>Demo</li></router-link>
-      <router-link to="/team/"><li>Team</li></router-link>
-      <router-link to="/connect-four/"><li>Connect Four</li></router-link>
-      <router-link to="/mcts/"><li>Monte Carlo Tree Search</li></router-link>
-      <router-link to="/minimax/"><li>Minimax</li></router-link>
-      <router-link to="/performance/"><li>Performance</li></router-link>
-      <router-link to="/bibliography/"><li>Bibliography</li></router-link>
+      <router-link to="/"><li><i class="fas fa-home"></i>Home</li></router-link>
+      <router-link to="/demo"><li><i class="fas fa-laptop-code"></i>Demo</li></router-link>
+      <router-link to="/team/"><li><i class="fas fa-users"></i>Team</li></router-link>
+      <router-link to="/connect-four/"><li><i class="fas fa-chess-board"></i>Connect Four</li></router-link>
+      <router-link to="/mcts/"><li><i class="fas fa-tree"></i>Monte Carlo Tree Search</li></router-link>
+      <router-link to="/minimax/"><li><i class="fas fa-chart-area"></i>Minimax</li></router-link>
+      <router-link to="/performance/"><li><i class="fas fa-bolt"></i>Performance</li></router-link>
+      <router-link to="/bibliography/"><li><i class="fas fa-book"></i>Bibliography</li></router-link>
     </ul>
   </div>
 </template>
@@ -26,11 +26,14 @@
 
 <style lang="scss" scoped>
  .nav-bar ul {
-     font-size: 1.2rem;
-     list-style-type: none;
+    font-size: 1.2rem;
+    list-style-type: none;
+    a { text-decoration: none }
  }
  .nav-bar li {
-     padding: 0.5rem;
+    padding: 0.5rem;
+    font-weight: 500;
+    i { padding-right: 10px }
  }
  .logo {
      width: 100%;

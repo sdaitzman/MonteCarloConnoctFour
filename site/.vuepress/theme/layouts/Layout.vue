@@ -8,6 +8,7 @@
         <Content />
       </div>
     </div>
+  <script src="https://kit.fontawesome.com/ab9d8096cd.js" crossorigin="anonymous"></script>
   </div>
 </template>
 
