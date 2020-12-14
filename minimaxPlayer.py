@@ -1,9 +1,15 @@
+"""
+Implementation of the Minimax algorithm for connect four. Works interlocked with
+the playWithMiniMax.py and connect4.py
+"""
+
 import random
 import numpy as np
 import copy
 import math
 from node import Node
 
+# the two character representations
 PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
 
@@ -13,6 +19,7 @@ def MiniMax(current_board, current_node=None):
     in the connect four game.
 
     current_board: the board object, at the current point in the game
+    current_node: move to work from.
     '''
 
     # how far the minimax alg will search down the game tree
@@ -61,8 +68,7 @@ def mini_max_search(depth_target, current_node):
     recursive algorithm to build game tree for a given depth limit.
 
     depth_target: int, how far to search from the current node in the game tree
-    board: board object
-    current_player: string, x or o, determining who's turn it is
+    current_node: object representing the current board state
     '''
 
 
@@ -99,10 +105,10 @@ def rating_eval(current_node):
     '''
     the heuristic function.
 
-    board: the board state
-    opponent: the piece to consider
+    current_node: Node object
     '''
 
+    # alias for the character of the opponent ('x' or 'o')
     opponent_piece = current_node.pieces[current_node.turn ^ 1]
 
     # how many 4's in a row there are in the board for the good piece
@@ -117,16 +123,17 @@ def rating_eval(current_node):
     # opponent 4's (super bad!)
     neg_fours = current_node.board.find_winner_multiple(opponent_piece, 4)
 
-    # opponent 3's
+    # opponent 3's (still not good)
     neg_threes = current_node.board.find_winner_multiple(opponent_piece, 3)
 
-    # opponent 2's
+    # opponent 2's (moderately bad)
     neg_twos = current_node.board.find_winner_multiple(opponent_piece, 2)
 
     if neg_fours >= 1:
         # dont make a move in which the opponent wins!
         rating =  -100000
     else:
+        # assemble the ratings into a single quantity
         rating =  pos_fours*100000 + pos_threes * 1000 + pos_twos * 10 - neg_twos * 10
 
     return rating

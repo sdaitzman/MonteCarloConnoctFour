@@ -1,5 +1,5 @@
 """
-Connect4 implementation code adapted from University of Notre Dame
+Connect4 base implementation code adapted from University of Notre Dame lab assignment:
 
 https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/project01.html
 
