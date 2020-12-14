@@ -3,10 +3,10 @@
     <ul>
       <li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li>
       <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/team/">Team</router-link></li>
       <li><router-link to="/connect-four/">Connect Four</router-link></li>
       <li><router-link to="/mcts/">MCTS</router-link></li>
       <li><router-link to="/minimax/">Minimax</router-link></li>
-      <li><router-link to="/heuristics/">Heuristics</router-link></li>
       <li><router-link to="/performance/">Performance</router-link></li>
       <li><router-link to="/discussion/">Discussion</router-link></li>
       <li><router-link to="/bibliography/">Bibliography</router-link></li>
@@ -24,7 +24,7 @@
   };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
  .nav-bar ul {
      font-size: 1.2rem;
      list-style-type: none;
