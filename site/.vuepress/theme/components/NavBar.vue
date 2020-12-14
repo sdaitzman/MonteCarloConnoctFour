@@ -3,6 +3,7 @@
     <ul>
       <li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li>
       <li><router-link to="/">Home</router-link></li>
+      <li><router-link to="/demo">Demo</router-link></li>
       <li><router-link to="/team/">Team</router-link></li>
       <li><router-link to="/connect-four/">Connect Four</router-link></li>
       <li><router-link to="/mcts/">Monte Carlo Tree Search</router-link></li>
