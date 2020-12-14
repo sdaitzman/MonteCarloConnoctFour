@@ -29,12 +29,6 @@ The Minimax Search Algorithm is a graph decision algorithm used, in this case, t
 
 <HeroButton to="/minimax">Minimax in Detail</HeroButton>
 
-### Heuristics
-#### MCTS
-
-#### Minimax
-In the minimax technique, game trees aren't typically played out in their entirety. As such, we only explore a few layers, the amount of which we can adjust according to how proficient we want the bot to be. Because we don't know the outcome of each game branch, we have to use a variable heuristic to rank the value of particular branches. One option is to count how many less-than-four length piece streaks exist, ranking them by their length.
-
 ### [performance](performance/index.md)
 
 <HeroButton to="/performance">More Performance Stats</HeroButton>
