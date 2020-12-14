@@ -6,7 +6,6 @@ layout: "Layout"
 
 # Annotated Bibliography
 
-*Go [home](/).*
 
 This is an entry in the OEIS of the possible arrangements of n Connect Four pieces in a 7 by 6 board. Having learned about the OEIS earlier in our studies of Discrete Math, it was fun to know our project had its own entry! Used as background research.
 

@@ -6,7 +6,6 @@ layout: "Layout"
 
 # Monte Carlo Tree Search 
 
-*Go [home](/).*
 
 # Game Tree
 

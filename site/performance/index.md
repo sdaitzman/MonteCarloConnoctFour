@@ -5,5 +5,3 @@ layout: "Layout"
 ---
 
 # Performance
-
-*Go [home](/).*
