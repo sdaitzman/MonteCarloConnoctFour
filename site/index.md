@@ -33,9 +33,9 @@ The Minimax Search Algorithm is a graph decision algorithm used, in this case, t
 
 <HeroButton to="/performance">More Performance Stats</HeroButton>
 
-### [discussion](discussion/index.md)
+<!-- ### [discussion](discussion/index.md) -->
 
-<HeroButton to="/discussion">Discussion in Depth</HeroButton>
+<!-- <HeroButton to="/discussion">Discussion in Depth</HeroButton> -->
 
 ### [bibliography](bibliography/index.md)
 
