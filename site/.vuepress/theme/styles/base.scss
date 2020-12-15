@@ -1,11 +1,13 @@
 @import 'prism';
 
 body { font-family: "Palatino Linotype", "Palatino", "Times New Roman", serif }
-
-html, body {
+html, body { color: #363636 }
+* {
     transition: font-size 0.3s ease, padding 0.3s ease;
-    color: #363636;
+    box-sizing: border-box;
 }
+
+
 a, a:hover, a:active, a:focus { -webkit-tap-highlight-color: rgba(0,0,0,0) }
 a, a:visited { color: #363636 }
 a:active { color: lighten(black, 75%) }
@@ -35,6 +37,11 @@ a:active { color: lighten(black, 75%) }
 }
 
 .home .home-link, .demo .demo-link, .team .team-link, .connect.four .conn-link, .mcts .mcts-link, .minimax .mnmx-link, .performance .perf-link, .bibliography .bibl-link { color: #549ffe; }
+
+@media (max-width: 1000px) {
+    .body-container { padding: 0 }
+}
+
 
 @media (max-width: 825px) {
     .all-container { flex-direction: column }
