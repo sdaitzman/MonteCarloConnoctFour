@@ -36,7 +36,7 @@ a:active { color: lighten(black, 75%) }
 
 .home .home-link, .demo .demo-link, .team .team-link, .connect.four .conn-link, .mcts .mcts-link, .minimax .mnmx-link, .performance .perf-link, .bibliography .bibl-link { color: #549ffe; }
 
-@media (max-width: 700px) {
+@media (max-width: 825px) {
     .all-container { flex-direction: column }
     .nav-bar {
         padding: 10px;
@@ -48,7 +48,7 @@ a:active { color: lighten(black, 75%) }
   /* Portrait and Landscape */
 @media only screen
   and (min-device-width: 375px)
-  and (max-device-width: 812px)
+  and (max-device-width: 825px)
   and (-webkit-min-device-pixel-ratio: 3) {
      .all-container {
         flex-direction: column;

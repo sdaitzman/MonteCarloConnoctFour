@@ -16,3 +16,9 @@ This paper dives into many human strategies that can be carried out in your next
 This Numberphile video touches on the many possibilities in a game of Connect Four and explores how the first player can always win if they play perfectly.
 
 <iframe width="100%" height="450px" src="https://www.youtube.com/embed/yDWPi1pZ0Po" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Connect four is a zero sum game where the terminal game state can be a single player winning, a single player losing, or a draw. For instance, given an initial board:
+
+![win states for connect 4](./fig/terminal.png)
+
+There are a few ways for one player to win, and also several ways for the other player to optimally win in the very next move.
