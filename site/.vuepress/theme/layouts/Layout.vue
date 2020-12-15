@@ -24,6 +24,7 @@
 <script>
 import NavBar from '@theme/components/NavBar'
 import 'normalize.css'
+import mediumZoom from 'medium-zoom'
 // import "fontsource-libre-baskerville"
 
 export default {
@@ -32,9 +33,11 @@ export default {
   },
   mounted() {
     document.addEventListener("touchstart", ()=>{}, true)
+    mediumZoom(document.querySelectorAll('img:not(.logo)'))
   },
   updated() {
     document.addEventListener("touchstart", ()=>{}, true)
+    mediumZoom(document.querySelectorAll('img:not(.logo)'))
   }
 }
 

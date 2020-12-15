@@ -1,7 +1,7 @@
 <template>
   <div class="nav-bar">
     <ul>
-      <router-link to="/"><li class="logo-holder"><img src="logo.png" class="logo" alt="game tree of connect four" /></li></router-link>
+      <router-link to="/"><li class="logo-holder"><img src="logo.png" class="logo no-medium-zoom" alt="game tree of connect four" /></li></router-link>
       <router-link class="home-link" to="/"><li><i class="fas fa-home"></i>Home</li></router-link>
       <router-link class="demo-link" to="/demo"><li><i class="fas fa-laptop-code"></i>Demo</li></router-link>
       <router-link class="team-link" to="/team/"><li><i class="fas fa-users"></i>Team</li></router-link>

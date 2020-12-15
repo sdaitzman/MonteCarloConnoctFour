@@ -13,12 +13,21 @@
   * TODO: add left and right props
   */
 import moment from "moment"
+import mediumZoom from 'medium-zoom'
+
+
 export default {
 		name: "SidePhoto",
 		data() {
 				return {};
 		},
-		props: {}
+    props: {},
+    mounted() {
+      mediumZoom(document.querySelectorAll('img:not(.logo)'))
+    },
+    updated() {
+      mediumZoom(document.querySelectorAll('img:not(.logo)'))
+    }
 };
 </script>
 
