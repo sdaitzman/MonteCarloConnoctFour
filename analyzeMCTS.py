@@ -52,7 +52,7 @@ def get_MCTS_winrate():
         for game in range(num_games):
             Board = connect4.Board()
 
-            winner = start_game(Board, "MCTS", "Random", itermax=itermax, print_winner=False)
+            winner = start_game(Board, ["MCTS", "Random"], itermax=itermax, print_winner=False)
             if winner == 0:
                 wins += 1
         winrate.append(wins/num_games * 100)
@@ -72,17 +72,17 @@ def train_MCTS(games_to_play, itermax):
     wins = 0
     for game in range(games_to_play):
         Board = connect4.Board()
-        winner = start_game(Board, "MCTS", "Random", node=node, itermax=itermax, timeout=3600, print_winner=False)
+        winner = start_game(Board, ["MCTS", "Random"], node=node, itermax=itermax, timeout=3600, print_winner=False)
         if winner == 0:
             wins += 1
-        if game % 10 == 0:
+        if game % 100 == 0:
             games.append(game+1)
             winrate.append(wins/(game+1))
 
     plt.plot(games, winrate, '.')
     plt.xlabel("Games Played")
     plt.ylabel("Win Percentage (%)")
-    plt.title("MCTS Win Rate (Itermax {})",format(itermax))
+    plt.title("MCTS Win Rate (Itermax {})".format(itermax))
     fig = plt.gcf()
     fig.savefig("MCTS_winrate_build.png")
     plt.show()
@@ -91,4 +91,4 @@ if __name__ == "__main__":
     # Uncomment functions to run analysis
     # get_MCTS_runtime(100, 1001, 100)
     # get_MCTS_winrate(25, 501, 25)
-    train_MCTS(100,100)
+    train_MCTS(100000,100)

@@ -20,11 +20,11 @@ player_type = ["Human", "Random", "MCTS"]
 # Increase itermax
 # Store game tree to continually train AI
 
-def start_game(board, player1, player2, node=None, itermax=100, print_winner=True, timeout=3600):
+def start_game(board, players, node=None, itermax=100, print_winner=True, timeout=3600):
     '''
     Plays a game of Connect Four.
     Board: Board object
-    player1, player2: "Human", "Random", or "MCTS" (defaults to MCTS)
+    players: "Human", "Random", or "MCTS" (defaults to MCTS)
     node: starting node
     itermax: number of simulations to run per turn
     print_winner: turn off if training or running multiple games, turn on to
@@ -33,6 +33,8 @@ def start_game(board, player1, player2, node=None, itermax=100, print_winner=Tru
              turn.
     '''
     Winner = None
+    player1 = players[0]
+    player2 = players[1]
     # If playing multiple games, initialize the same starting node to build
     # upon the existing tree.
     if node == None:
@@ -63,17 +65,17 @@ def start_game(board, player1, player2, node=None, itermax=100, print_winner=Tru
                 node, move = MCTS(board, itermax, node, timeout=timeout)   # Player One
 
         # If a valid move is returned, play it
-        if move != None:
-            if board.drop_piece(move, node.piece):
-                board.history.append(move)
+        # if move != None:
+        if board.drop_piece(move, node.piece):
+            board.history.append(move)
 
-            if node.child_nodes:
-                for child_node in node.child_nodes:
-                    if move == child_node.move:
-                        node = child_node
-                        break
-            else:
-                node = Node(board=board)
+        if node.child_nodes:
+            for child_node in node.child_nodes:
+                if move == child_node.move:
+                    node = child_node
+                    break
+        else:
+            node = Node(board=board)
 
         # Check for terminal state
         Winner = board.find_winner()
@@ -91,4 +93,4 @@ if __name__ == "__main__":
     print("Play game --------------")
     timeout = 600
     itermax = 500
-    winner = start_game(Board, "MCTS", "Human", itermax=itermax, timeout=timeout)
+    winner = start_game(Board, ["MCTS", "Human"], itermax=itermax, timeout=timeout)
