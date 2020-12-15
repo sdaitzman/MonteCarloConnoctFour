@@ -65,8 +65,7 @@ class Node:
         that move and return that new node. Also actually adjust the board for the minimax
         algorithm
         '''
-        new_board = copy.deepcopy(board)
-        new_node = Node(move=move, board=new_board, parent_node=self)
+        new_node = Node(move=move, board=board, parent_node=self)
 
         # adjust board history for move
         #if new_node.board.drop_piece_test(move, new_node.piece):
@@ -93,9 +92,8 @@ class Node:
         that move and return that new node. Also actually adjust the board for the minimax
         algorithm
         '''
-        new_board = copy.deepcopy(board)
-
-        new_node = Node(move=move, board=new_board, parent_node=self)
+        
+        new_node = Node(move=move, board=board, parent_node=self)
 
         new_node.turn = new_node.board.turn
 
