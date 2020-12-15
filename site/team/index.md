@@ -6,8 +6,10 @@ layout: "Layout"
 
 # Team
 
-## Dieter Brehm
-
 ## Megan Ku
 
 ## Sam Daitzman
+
+## Dieter Brehm
+
+<img src="./fig/dieter.jpg" style="width: 40%">
