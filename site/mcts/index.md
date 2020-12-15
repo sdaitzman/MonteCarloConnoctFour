@@ -21,6 +21,12 @@ Each node in the game tree represents a configuration of pieces on the board. Th
 
 With this structure, the root node is the empty board at the beginning of the game, and edges represent potential board game states that can happen sequentially. Traversing from the top of the tree all the way to a leaf simulates a game being played. For our implementation, we assume that the 'x' piece always goes first, which means we can use the same tree to train both players.
 
+Visually, we can represent it as:
+
+![diagram of mcts game tree](./fig/mctstree.png)
+
+Where we see a path being taken through the possible positions until a final outcome
+
 # The Search
 
 When it is the computer's turn to take a move, the algorithm determines the optimal move after playing out multiple games.
