@@ -6,8 +6,6 @@ layout: "Layout"
 
 # Team
 
-*Go [home](/).*
-
 ## Dieter Brehm
 
 ## Megan Ku

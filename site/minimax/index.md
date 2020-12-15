@@ -6,8 +6,6 @@ layout: "Layout"
 
 # Minimax
 
-*Go [home](/).*
-
 The Minimax Search Algorithm is a graph decision algorithm used, in this case, to offer move candidates for our Connect Four bot. Its name comes from its goal to *minimize* the score of its opponent while *maximizing* the bot score at every move made. In contrast to the MCTS algorithm, it doesn't play out the game tree entirely to a terminal state. Instead, we utilize both a variable depth and a heuristic that doesn't depend on whether a given branch results in a win.
 
 ## Variability

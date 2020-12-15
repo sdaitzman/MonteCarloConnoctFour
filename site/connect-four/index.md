@@ -6,8 +6,6 @@ layout: "Layout"
 
 # Connect Four
 
-*Go [home](/)*
-
 Connect Four was invented by Howard Wexler in 1973. He wanted to create a game that had a vertical game board in contrast to the typical tabletop board style. As he wasn't a mathematician, he worried a lot about the game falling into stalemate often, but that turned out to not be the case. You can read an interview of him by Fordham News here: 
 > [https://news.fordham.edu/fordham-magazine/toy-story-catching-up-with-howard-wexler-inventor-of-the-classic-game-connect-4/](https://news.fordham.edu/fordham-magazine/toy-story-catching-up-with-howard-wexler-inventor-of-the-classic-game-connect-4/)
 

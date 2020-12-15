@@ -34,13 +34,15 @@ a:active { color: lighten(black, 75%) }
   padding-right: 1rem;
 }
 
+.home .home-link, .demo .demo-link, .team .team-link, .connect.four .conn-link, .mcts .mcts-link, .minimax .mnmx-link, .performance .perf-link, .bibliography .bibl-link { color: #549ffe; }
+
 @media (max-width: 700px) {
-    .all-container {
-        flex-direction: column;
-    }
+    .all-container { flex-direction: column }
     .nav-bar {
-        padding-bottom: 0px;
+        padding: 10px;
+        ul { padding: 0 }
     }
+    .body-container { padding: 10px }
 }
 
   /* Portrait and Landscape */
