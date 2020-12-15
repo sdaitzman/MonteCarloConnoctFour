@@ -5,7 +5,7 @@ layout: "Layout"
 ---
 
 ## Automated Four in a Row
-***Explorations in Tree Searches  and Game Algorithms***
+***Explorations in Tree Searches and Game Algorithms***
 <br>
 <br>
 
