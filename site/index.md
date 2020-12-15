@@ -56,7 +56,9 @@ While our MCTS-based computer player will not be going pro anytime soon, we look
 
 <!-- <HeroButton to="/discussion">Discussion in Depth</HeroButton> -->
 
-### [bibliography](bibliography/index.md)
+### [Bibliography](bibliography/index.md)
+
+<HeroButton to="/bibliography">References and Bibliography</HeroButton>
 
 ---
 Made with ❤️ at Olin College. [source code](https://github.com/sdaitzman/MonteCarloConnoctFour)
