@@ -40,15 +40,13 @@ a:active { color: lighten(black, 75%) }
 
 @media (max-width: 1000px) {
     .body-container { padding: 0 }
+    .nav-bar { padding: 0 }
 }
 
 
 @media (max-width: 825px) {
     .all-container { flex-direction: column }
-    .nav-bar {
-        padding: 10px;
-        ul { padding: 0 }
-    }
+    .nav-bar { ul { padding: 0 } }
     .body-container { padding: 10px }
 }
 
