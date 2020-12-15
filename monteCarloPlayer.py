@@ -39,6 +39,8 @@ class Node:
         Makes a move based on both exploration and exploitation.
         Returns the child node with the highest value given the formula
         wins/visits + sqrt(2*log(visits)/(child_node visits))
+        This formula is known as UCT, or the upper confidence bound applied to
+        trees.
 
         '''
         foo = lambda x: x.wins/x.visits + np.sqrt(2*np.log(self.visits)/x.visits)

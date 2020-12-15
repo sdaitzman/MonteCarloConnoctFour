@@ -4,11 +4,15 @@ date: 2020-12-02
 layout: "Layout"
 ---
 
-# Monte Carlo Connect Four
-Hi There!  
+## Automated Four in a Row
+***Explorations in Tree Searches  and Game Algorithms***
+<br>
+<br>
+
+Hi There!
 
 <SidePhoto>
-<p>We implemented and tested a Monte Carlo Tree Search algorithm that can successfully play Connect Four against a human player or another simulation. <br> <br><br>In the process,  we trained our algorithm, built an alternative minimax simulated player, and compared their performance. In this website, we included our findings, research, and conclusions. Take a dive in the world of board game bots and connect four!</p>
+<p>We implemented and tested a <strong>Monte Carlo Tree Search</strong> algorithm that can successfully play Connect Four against a human player or another simulation. <br> <br>In the process,  we learned about the logic behind the approach, trained our algorithm, and built an alternative minimax simulated player. In this website, we included our findings, research, and conclusions. Take a dive in the world of board game bots and connect four!</p>
 
 <img src="./run.png"/>
 
