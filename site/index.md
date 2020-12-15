@@ -47,7 +47,7 @@ In contrast to the MCTS, it doesn't play out the game tree entirely.
 
 <HeroButton to="/minimax">Minimax in Detail</HeroButton>
 
-### [performance](performance/index.md)
+### [Performance](performance/index.md)
 While our MCTS-based computer player will not be going pro anytime soon, we looked into analyzing what it would take to make our implementation a tough competitor.
 
 <HeroButton to="/performance">More Performance Stats</HeroButton>
@@ -56,7 +56,9 @@ While our MCTS-based computer player will not be going pro anytime soon, we look
 
 <!-- <HeroButton to="/discussion">Discussion in Depth</HeroButton> -->
 
-### [bibliography](bibliography/index.md)
+### [Bibliography](bibliography/index.md)
+
+<HeroButton to="/bibliography">References and Bibliography</HeroButton>
 
 ---
 Made with ❤️ at Olin College. [source code](https://github.com/sdaitzman/MonteCarloConnoctFour)
