@@ -31,22 +31,25 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .photo-holder {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-between;
+  img {
+    width: 50%;
+    align-self: flex-start;
+  }
 }
 .photo-holder p {
   margin: 0;
 }
-img {
-    height: 100%
-}
-@media (max-width: 750px) {
+
+@media (max-width: 825px) {
   .photo-holder {
     flex-direction: column;
+    img { width: 100% }
   }
   .photo-holder p {
      margin-top: 1em;
