@@ -135,9 +135,9 @@ def rating_eval(current_node):
 
     if neg_fours >= 1:
         # dont make a move in which the opponent wins!
-        rating =  -100000
+        rating =  -99999
     else:
         # assemble the ratings into a single quantity
-        rating =  pos_fours*100000 + pos_threes * 1000 + pos_twos * 10 - neg_threes * 100 - neg_twos * 10
+        rating =  pos_fours*-99999 + pos_threes * 999 + pos_twos * 9 - neg_threes * 99 - neg_twos * 9
 
     return rating
