@@ -23,7 +23,7 @@ def MiniMax(current_board, current_node=None):
     '''
 
     # how far the minimax alg will search down the game tree
-    search_depth = 3
+    search_depth = 4
 
     # if we're given a game in progress
     if current_node != None:
@@ -71,7 +71,6 @@ def mini_max_search(depth_target, current_node):
     current_node: object representing the current board state
     '''
 
-
     # get all the valid moves
     # (children of current board state)
     potential_moves = current_node.new_moves
@@ -81,6 +80,11 @@ def mini_max_search(depth_target, current_node):
         # make a new node with the given move
         # and flip the turn toggle
         current_node.expand_tree_silent(move, current_node.board)
+
+        print(current_node.board)
+
+    # if depth_target == 3:
+    #     print(current_node.child_nodes[0].piece, current_node.child_nodes[0].turn, current_node.child_nodes[0].parent_node.turn)
 
     # check if it's a terminal (root or full board or game over) state
     # if terminal, evaluate heuristic at point
@@ -134,6 +138,6 @@ def rating_eval(current_node):
         rating =  -100000
     else:
         # assemble the ratings into a single quantity
-        rating =  pos_fours*100000 + pos_threes * 1000 + pos_twos * 10 - neg_twos * 10
+        rating =  pos_fours*100000 + pos_threes * 1000 + pos_twos * 10 - neg_threes * 100 - neg_twos * 10
 
     return rating

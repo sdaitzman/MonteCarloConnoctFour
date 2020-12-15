@@ -51,7 +51,7 @@ class Node:
         new_node = Node(move=move, board=board, parent_node=self)
         # switch to opponent's turn to continue the game
         new_node.board.turn ^= 1
-        new_node.switch_turns()
+        new_node.switch_turns(board)
         #mark node as visited
         self.new_moves.remove(move)
         # link node to tree
@@ -65,8 +65,8 @@ class Node:
         that move and return that new node. Also actually adjust the board for the minimax
         algorithm
         '''
-        board = copy.deepcopy(board)
-        new_node = Node(move=move, board=board, parent_node=self)
+        new_board = copy.deepcopy(board)
+        new_node = Node(move=move, board=new_board, parent_node=self)
 
         # adjust board history for move
         #if new_node.board.drop_piece_test(move, new_node.piece):
@@ -74,10 +74,13 @@ class Node:
 
         # switch to opponent's turn to continue the game
         new_node.board.turn ^= 1
-        new_node.switch_turns(board=board)
+        # new_node.switch_turns(new_node.board)
+        new_node.turn = new_node.board.turn
 
-        # mark node as visited
-        #self.new_moves.remove(move)
+        if new_node.piece == 'x':
+            new_node.piece = 'o'
+        else:
+            new_node.piece = 'x'
 
         # link node to tree
         self.child_nodes.append(new_node)
@@ -87,23 +90,22 @@ class Node:
     def expand_tree_silent(self, move, board):
         '''
         Given a move not previously explored, create a child node to represent
-        that move and DONT return that new node. It only exists in the child link.
+        that move and return that new node. Also actually adjust the board for the minimax
+        algorithm
         '''
+        new_board = copy.deepcopy(board)
 
-        board = copy.deepcopy(board)
-        new_node = Node(move=move, board=board, parent_node=self)
+        new_node = Node(move=move, board=new_board, parent_node=self)
+
+        new_node.turn = new_node.board.turn
+
+        if new_node.piece == 'x':
+            new_node.piece = 'o'
+        else:
+            new_node.piece = 'x'
 
         # adjust board history for move
-        #if new_node.board.drop_piece_test(move, new_node.piece):
         new_node.board.drop_piece(move, new_node.piece)
-
-        # switch to opponent's turn to continue the game
-        new_node.board.turn ^= 1
-        new_node.switch_turns(board=board)
-
-        # mark node as visited
-        # TODO will this be a bug in the Minimax alg?
-        #self.new_moves.remove(move)
 
         # link node to tree
         self.child_nodes.append(new_node)
@@ -125,3 +127,4 @@ class Node:
         else:
             self.turn = self.board.turn
         self.piece = self.pieces[self.turn]
+
