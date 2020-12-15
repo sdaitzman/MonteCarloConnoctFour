@@ -19,16 +19,13 @@ import mediumZoom from 'medium-zoom'
 export default {
 		name: "SidePhoto",
 		data() {
-				return {};
+				return {}
 		},
     props: {},
     mounted() {
       mediumZoom(document.querySelectorAll('img:not(.logo)'))
-    },
-    updated() {
-      mediumZoom(document.querySelectorAll('img:not(.logo)'))
     }
-};
+}
 </script>
 
 <style lang="scss" scoped>
