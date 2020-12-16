@@ -81,10 +81,7 @@ def mini_max_search(depth_target, current_node):
         # and flip the turn toggle
         current_node.expand_tree_silent(move, current_node.board)
 
-        print(current_node.board)
-
-    # if depth_target == 3:
-    #     print(current_node.child_nodes[0].piece, current_node.child_nodes[0].turn, current_node.child_nodes[0].parent_node.turn)
+        #print(current_node.board)
 
     # check if it's a terminal (root or full board or game over) state
     # if terminal, evaluate heuristic at point
