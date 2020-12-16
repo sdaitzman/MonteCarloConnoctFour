@@ -52,8 +52,10 @@ def start_game(board, players, node=None, itermax=100, print_winner=True, timeou
                 print(board)
                 move = connect4.HumanPlayer(board, Players)  # Human Player
             elif player1 == player_type[1]:
+                print(board)
                 move = MiniMax(board, node)  # Minimax Player
             else:
+                print(board)
                 node, move = MCTS(board, itermax, node, timeout=timeout)   # MCTS Player
 
         else:
@@ -61,8 +63,10 @@ def start_game(board, players, node=None, itermax=100, print_winner=True, timeou
                 print(board)
                 move = connect4.HumanPlayer(board, Players)  # Human Player
             elif player2 == player_type[1]:
+                print(board)
                 move = MiniMax(board, node)  # Random Player
             else:
+                print(board)
                 node, move = MCTS(board, itermax, node, timeout=timeout)   # Player One
 
         # If a valid move is returned, play it
