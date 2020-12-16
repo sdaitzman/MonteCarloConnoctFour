@@ -1,6 +1,7 @@
 import random
 import copy
 import math
+import numpy as np
 
 PIECE_ONE  = 'x'
 PIECE_TWO  = 'o'
@@ -50,7 +51,7 @@ class Node:
         new_node = Node(move=move, board=board, parent_node=self)
         # switch to opponent's turn to continue the game
         new_node.board.turn ^= 1
-        new_node.switch_turns(board)
+        new_node.switch_turns(board=board)
         #mark node as visited
         self.new_moves.remove(move)
         # link node to tree
@@ -91,7 +92,7 @@ class Node:
         that move and return that new node. Also actually adjust the board for the minimax
         algorithm
         '''
-        
+
         new_node = Node(move=move, board=board, parent_node=self)
 
         new_node.turn = new_node.board.turn

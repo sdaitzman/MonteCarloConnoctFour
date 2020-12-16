@@ -1,108 +1,97 @@
 #!/usr/bin/env python3
+"""
+Connect4 implementation code adapted from University of Notre Dame
+
+https://www3.nd.edu/~pbui/teaching/cdt.30010.fa16/project01.html
+
+"""
 import connect4
 from monteCarloPlayer import MCTS
-from node import Node
 from minimaxPlayer import MiniMax
+from node import Node
 import time
 import copy
 import pickle
-# Globals
 
+# Globals
 Players = (connect4.PIECE_ONE, connect4.PIECE_TWO)
-Board   = connect4.Board()
-Radius  = 40
-Tries   = 0
 player_type = ["Human", "MiniMax", "MCTS"]
 
-#TODO Increase itermax
-#TODO Store game tree to continually train AI
-itermax = 200
+# Next Steps:
+# Increase itermax
+# Store game tree to continually train AI
 
-def start_game(board, player1, player2, itermax=100, build_tree=False, db=None):
-    Tries   = 0
+def start_game(board, players, node=None, itermax=100, print_winner=True, timeout=3600):
+    '''
+    Plays a game of Connect Four.
+    Board: Board object
+    players: "Human", "Random", or "MCTS" (defaults to MCTS)
+    node: starting node
+    itermax: number of simulations to run per turn
+    print_winner: turn off if training or running multiple games, turn on to
+                  see winner after every game
+    timeout: parameter to cutoff iterations if too long. Defaults to 1 hour per
+             turn.
+    '''
     Winner = None
-    node = Node(board=board)
-    if db:
-        if len(db) >= 2:
-            node = db[1]
-    elif build_tree and db != None and node not in db:
-        db.append(node)
-        print("Added board")
-        print(db[1].board)
+    player1 = players[0]
+    player2 = players[1]
+    # If playing multiple games, initialize the same starting node to build
+    # upon the existing tree.
+    if node == None:
+        node = Node(board=board)
     while not Winner:
+        # Determine player
         turn = len(board.history)
         node.turn = turn % 2
         node.piece = node.pieces[node.turn]
 
+        # Handle different player types
         if turn % 2 == 0:
             if player1 == player_type[0]:
                 print(board)
                 move = connect4.HumanPlayer(board, Players)  # Human Player
             elif player1 == player_type[1]:
-                print(board)
-                move = MiniMax(board, node)
+                move = MiniMax(board, node)  # Minimax Player
             else:
-                print(board)
-                node, move = MCTS(board, itermax, node, build_tree=build_tree, db=db)   # MCTS Player
-            # print("player move is ", move, "history is ", board.history)
+                node, move = MCTS(board, itermax, node, timeout=timeout)   # MCTS Player
 
         else:
             if player2 == player_type[0]:
                 print(board)
                 move = connect4.HumanPlayer(board, Players)  # Human Player
             elif player2 == player_type[1]:
-                move = MiniMax(board, node)
+                move = MiniMax(board, node)  # Random Player
             else:
-                node, move = MCTS(board, itermax, node, build_tree=build_tree, db=db)   # Player One
+                node, move = MCTS(board, itermax, node, timeout=timeout)   # Player One
 
-        if move != None:
+        # If a valid move is returned, play it
+        # if move != None:
+        if board.drop_piece(move, node.piece):
+            board.history.append(move)
 
-            if board.drop_piece(move, node.piece):
-                board.history.append(move)
+        if node.child_nodes:
+            for child_node in node.child_nodes:
+                if move == child_node.move:
+                    node = child_node
+                    break
+        else:
+            node = Node(board=board)
 
-            if node.child_nodes:
-                for child_node in node.child_nodes:
-                    if move == child_node.move:
-                        node = child_node
-                        break
-            else:
-                node = Node(board=board)
-
-            if build_tree and db != [] and node not in db:
-                db.append(node)
-
+        # Check for terminal state
         Winner = board.find_winner()
 
-        # if Winner is not None:
-        #     print(connect4.PIECE_COLOR_MAP[Winner])
-
-    if not build_tree:
+    # Print winner
+    if print_winner:
         print("The Winner is the", Winner, "piece")
-
+        print(node.board)
     return Players.index(Winner)
 
-# TODO: Run multiple simulations and see how many times MCTS wins against other
-# players
+
 if __name__ == "__main__":
-    # winner = start_game(Board, "MCTS", "Human", itermax=1000)
-    # print(winner)
-
-    ## Uncomment to play several games against MCTS
-    # games = 100
-    # wins = 0
-    # for game in range(games):
-    #     Board = connect4.Board()
-    #     winner = start_game(Board, "Random", "MCTS", itermax=100)
-    #     #print("Winner is player", winner + 1)
-    #     if winner == 1: # first player is 0, second is 1
-    #         wins += 1
-    #     percent_win = wins/(game+1) * 100
-    #     if game % 2 == 1:
-    #         print("MCTS win rate against random player: {}%".format(percent_win))
-
+    Board   = connect4.Board()
     ## Play against MCTS
-    # dbfile = open('tree_MCTS','rb')
-    # db = pickle.load(dbfile)
-    # print(db[1].board)
     print("Play game --------------")
-    winner = start_game(Board, "MCTS", "MiniMax", itermax=100, db=None)
+    timeout = 600
+    itermax = 500
+    winner = start_game(Board, ["MCTS", "MiniMax"], itermax=itermax, timeout=timeout)
